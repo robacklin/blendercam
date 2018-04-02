@@ -263,11 +263,21 @@ def getBounds(o):
 		o.max.z=o.source_image_offset.z
 	s=bpy.context.scene
 	m=s.cam_machine
-	if o.max.x-o.min.x>m.working_area.x or o.max.y-o.min.y>m.working_area.y or o.max.z-o.min.z>m.working_area.z:
+	if o.max.x-o.min.x>m.working_area.x:
 		#o.max.x=min(o.min.x+m.working_area.x,o.max.x)
 		#o.max.y=min(o.min.y+m.working_area.y,o.max.y)
 		#o.max.z=min(o.min.z+m.working_area.z,o.max.z)
-		o.warnings+='Operation exceeds your machine limits\n'
+		o.warnings+='Operation exceeds your machine X limits\n'
+	if o.max.y-o.min.y>m.working_area.y:
+		#o.max.x=min(o.min.x+m.working_area.x,o.max.x)
+		#o.max.y=min(o.min.y+m.working_area.y,o.max.y)
+		#o.max.z=min(o.min.z+m.working_area.z,o.max.z)
+		o.warnings+='Operation exceeds your machine Y limits\n'
+	if o.max.z-o.min.z>m.working_area.z:
+		#o.max.x=min(o.min.x+m.working_area.x,o.max.x)
+		#o.max.y=min(o.min.y+m.working_area.y,o.max.y)
+		#o.max.z=min(o.min.z+m.working_area.z,o.max.z)
+		o.warnings+='Operation exceeds your machine Z limits\n'
 		
 	#progress (o.min.x,o.min.y,o.min.z,o.max.x,o.max.y,o.max.z)
 	
